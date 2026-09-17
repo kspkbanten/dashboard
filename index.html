@@ -11772,6 +11772,14 @@
         .rekap-kab-head-table col.rk-c-pct,
         .rekap-kab-body-table col.rk-c-pct { width: 17%; }
 
+        /* Desktop: teks penuh; Mobile: versi pendek */
+        .rekap-head-freeze thead th .rk-th-short { display: none; }
+        .rekap-head-freeze thead th .rk-th-full { display: inline; }
+        @media (max-width: 768px) {
+            .rekap-head-freeze thead th .rk-th-full { display: none !important; }
+            .rekap-head-freeze thead th .rk-th-short { display: inline !important; }
+        }
+
         .rekap-head-freeze thead th {
             background: #0b2a47 !important;
             color: #fff !important;
@@ -11977,10 +11985,27 @@
         @media (min-width: 769px) {
             .rekap-kab-head-table,
             .rekap-kab-body-table { font-size: 13px; }
-            .rekap-head-freeze thead th { font-size: 12px; padding: 10px 8px; }
+            .rekap-head-freeze thead th {
+                font-size: 12px;
+                padding: 10px 8px;
+                white-space: nowrap;
+            }
             .rekap-kab-body-table td { padding: 8px 8px; }
             .rekap-kab-body-table td.rk-kab,
             .rekap-kab-body-table td.rk-prog { font-size: 12.5px; }
+            /* Pastikan Target & Capaian tidak terpotong di PC */
+            .rekap-kab-head-table col.rk-c-tgt,
+            .rekap-kab-body-table col.rk-c-tgt { width: 14% !important; }
+            .rekap-kab-head-table col.rk-c-cap,
+            .rekap-kab-body-table col.rk-c-cap { width: 14% !important; }
+            .rekap-kab-head-table col.rk-c-kab,
+            .rekap-kab-body-table col.rk-c-kab { width: 22% !important; }
+            .rekap-kab-head-table col.rk-c-prog,
+            .rekap-kab-body-table col.rk-c-prog { width: 26% !important; }
+            .rekap-kab-head-table col.rk-c-pct,
+            .rekap-kab-body-table col.rk-c-pct { width: 16% !important; }
+            .rekap-kab-head-table col.rk-c-no,
+            .rekap-kab-body-table col.rk-c-no { width: 8% !important; }
         }
 
 .rekap-legend .rl-dot.lo { background: #fca5a5; }
@@ -12194,10 +12219,10 @@
                             <thead id="rekapKabProgramHead">
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Kab/<br>Kota</th>
+                                    <th scope="col"><span class="rk-th-full">Kab/Kota</span><span class="rk-th-short">Kab/<br>Kota</span></th>
                                     <th scope="col">Program</th>
-                                    <th scope="col">Tar<br>get</th>
-                                    <th scope="col">Ca<br>paian</th>
+                                    <th scope="col"><span class="rk-th-full">Target</span><span class="rk-th-short">Tar<br>get</span></th>
+                                    <th scope="col"><span class="rk-th-full">Capaian</span><span class="rk-th-short">Ca<br>paian</span></th>
                                     <th scope="col">%</th>
                                 </tr>
                             </thead>
@@ -16204,10 +16229,10 @@ const summaryHtml =
                 thead.innerHTML =
                     '<tr>' +
                       '<th scope="col">No</th>' +
-                      '<th scope="col">Kab/<br>Kota</th>' +
+                      '<th scope="col"><span class="rk-th-full">Kab/Kota</span><span class="rk-th-short">Kab/<br>Kota</span></th>' +
                       '<th scope="col">Program</th>' +
-                      '<th scope="col">Tar<br>get</th>' +
-                      '<th scope="col">Ca<br>paian</th>' +
+                      '<th scope="col"><span class="rk-th-full">Target</span><span class="rk-th-short">Tar<br>get</span></th>' +
+                      '<th scope="col"><span class="rk-th-full">Capaian</span><span class="rk-th-short">Ca<br>paian</span></th>' +
                       '<th scope="col">%</th>' +
                     '</tr>';
             }
